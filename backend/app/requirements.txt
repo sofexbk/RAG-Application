@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlalchemy>=1.4
+psycopg2-binary
+alembic
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic
+aiofiles
+httpx
+qdrant-client
+redis>=4.0
+python-multipart
+pypdf
+tqdm
+python-dotenv
