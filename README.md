@@ -14,11 +14,19 @@ A full-stack Retrieval-Augmented Generation (RAG) system that allows users to up
                          │  Redis  │         │     Qdrant      │
                          │(Caching)│         │ (Vector Store)  │
                          └─────────┘         └─────────────────┘
-                              │                       │
-                         ┌────▼────┐         ┌───────▼────────┐
-                         │   LLM   │         │   Embeddings   │
-                         │(OpenAI) │         │    Model       │
-                         └─────────┘         └────────────────┘
+                              │                      │
+                    ┌─────────▼─────────┐    ┌───────▼────────┐
+                    │    AI Pipeline     │    │   Embeddings   │
+                    │                    │    │   (OpenAI)     │
+                    │ ┌─────────────────┐│    └────────────────┘
+                    │ │  Claude 3.5     ││
+                    │ │ (Answer Gen)    ││    ┌────────────────┐
+                    │ └─────────────────┘│    │   Document     │
+                    │ ┌─────────────────┐│    │  Processing    │
+                    │ │     OpenAI      ││    │ (PyPDF2/Text)  │
+                    │ │  (Embeddings)   ││    └────────────────┘
+                    │ └─────────────────┘│
+                    └────────────────────┘
 ```
 
 ### Core Components
