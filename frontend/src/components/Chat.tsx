@@ -290,7 +290,7 @@ export default function Chat({ token, darkMode = false }: Props) {
                             darkMode ? 'bg-blue-400' : 'bg-blue-400'
                           }`}></span>
                           <span className="flex-1">
-                            {s.payload?.title ?? `Source ${s.id}`}
+                            {s.title || s.document_title || s.name || `Document ${s.document_id}`}
                             {s.score && (
                               <span className={`ml-2 px-2 py-0.5 rounded text-xs ${
                                 darkMode 

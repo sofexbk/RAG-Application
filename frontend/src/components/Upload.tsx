@@ -21,10 +21,10 @@ export default function Upload({ token, darkMode = false }: Props) {
 
   const validateFile = (file: File): string | null => {
     if (file.type !== 'application/pdf') {
-      return "Seuls les fichiers PDF sont acceptés.";
+      return "Only PDF files are accepted.";
     }
     if (file.size > MAX_FILE_SIZE) {
-      return "Le fichier doit faire moins de 10MB.";
+      return "File must be less than 10MB.";
     }
     return null;
   };
@@ -45,7 +45,7 @@ export default function Upload({ token, darkMode = false }: Props) {
 
   const handleUpload = async () => {
     if (!file) {
-      setStatus("Veuillez choisir un fichier PDF.");
+      setStatus("Please choose a PDF file.");
       setUploadStatus('error');
       return;
     }
@@ -54,7 +54,7 @@ export default function Upload({ token, darkMode = false }: Props) {
     setStatus("");
     setProgress(0);
     
-    // Simulation du progrès (à remplacer par la vraie progression si votre API le supporte)
+    // Progress simulation (replace with real progress if your API supports it)
     const progressInterval = setInterval(() => {
       setProgress(prev => Math.min(prev + Math.random() * 30, 90));
     }, 200);
@@ -68,7 +68,7 @@ export default function Upload({ token, darkMode = false }: Props) {
     } catch (e: any) {
       clearInterval(progressInterval);
       setProgress(0);
-      setStatus(`Échec de l'upload: ${e.message}`);
+      setStatus(`Upload failed: ${e.message}`);
       setUploadStatus('error');
     }
   };
@@ -152,11 +152,11 @@ export default function Upload({ token, darkMode = false }: Props) {
           darkMode ? 'text-white' : 'text-gray-800'
         }`}>Upload PDF</h3>
         <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-          Glissez-déposez votre fichier ou cliquez pour le sélectionner
+          Drag and drop your file or click to select
         </p>
       </div>
 
-      {/* Zone de drop */}
+      {/* Drop Zone */}
       <div
         className={`
           relative border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200
@@ -186,14 +186,14 @@ export default function Upload({ token, darkMode = false }: Props) {
             <p className={`text-lg mb-4 ${
               darkMode ? 'text-gray-300' : 'text-gray-600'
             }`}>
-              {dragActive ? "Relâchez pour déposer le fichier" : "Glissez-déposez votre PDF ici"}
+              {dragActive ? "Release to drop the file" : "Drag and drop your PDF here"}
             </p>
             <p className={`text-sm mb-4 ${
               darkMode ? 'text-gray-400' : 'text-gray-500'
-            }`}>ou</p>
+            }`}>or</p>
             <label className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg cursor-pointer transition-colors font-medium">
               <FaFilePdf />
-              Parcourir les fichiers
+              Browse Files
               <input
                 ref={fileInputRef}
                 type="file"
@@ -204,7 +204,7 @@ export default function Upload({ token, darkMode = false }: Props) {
             </label>
             <p className={`text-xs mt-3 ${
               darkMode ? 'text-gray-400' : 'text-gray-500'
-            }`}>PDF uniquement, max 10MB</p>
+            }`}>PDF only, max 10MB</p>
           </>
         ) : (
           <div className={`flex items-center justify-between p-4 rounded-lg border ${
@@ -230,7 +230,7 @@ export default function Upload({ token, darkMode = false }: Props) {
                   ? 'text-gray-400 hover:text-red-400 hover:bg-red-900/20' 
                   : 'text-gray-500 hover:text-red-600 hover:bg-red-50'
               }`}
-              title="Supprimer le fichier"
+              title="Remove file"
             >
               <FaTimes />
             </button>
@@ -238,13 +238,13 @@ export default function Upload({ token, darkMode = false }: Props) {
         )}
       </div>
 
-      {/* Barre de progression */}
+      {/* Progress Bar */}
       {uploadStatus === 'uploading' && (
         <div className="mt-6">
           <div className={`flex justify-between text-sm mb-2 ${
             darkMode ? 'text-gray-300' : 'text-gray-600'
           }`}>
-            <span>Upload en cours...</span>
+            <span>Uploading...</span>
             <span>{Math.round(progress)}%</span>
           </div>
           <div className={`w-full rounded-full h-2 ${
@@ -258,7 +258,7 @@ export default function Upload({ token, darkMode = false }: Props) {
         </div>
       )}
 
-      {/* Bouton Upload */}
+      {/* Upload Button */}
       <div className="mt-6 flex justify-center">
         <button
           onClick={handleUpload}
@@ -276,18 +276,18 @@ export default function Upload({ token, darkMode = false }: Props) {
           {uploadStatus === 'uploading' ? (
             <>
               <FaSpinner className="animate-spin" />
-              Upload en cours...
+              Uploading...
             </>
           ) : (
             <>
               <FaUpload />
-              Uploader le PDF
+              Upload PDF
             </>
           )}
         </button>
       </div>
 
-      {/* Message de statut */}
+      {/* Status Message */}
       {status && (
         <div className={`mt-6 p-6 border rounded-xl ${getStatusColor()}`}>
           <div className="flex items-start gap-3">
@@ -296,9 +296,9 @@ export default function Upload({ token, darkMode = false }: Props) {
             </div>
             <div className="flex-1">
               <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
-                {uploadStatus === 'success' && "✅ Document analysé avec succès"}
-                {uploadStatus === 'error' && "❌ Erreur lors de l'upload"}
-                {uploadStatus === 'uploading' && "⏳ Analyse en cours..."}
+                {uploadStatus === 'success' && "✅ Document analyzed successfully"}
+                {uploadStatus === 'error' && "❌ Upload error"}
+                {uploadStatus === 'uploading' && "⏳ Analyzing..."}
               </h4>
               <div className="whitespace-pre-wrap leading-relaxed">
                 {status}

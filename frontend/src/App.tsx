@@ -53,20 +53,19 @@ export default function App() {
   };
 
   const logout = () => {
-    console.log("Logout function called"); // Debug
+    console.log("Logout function called");
     try {
       localStorage.removeItem("token");
       localStorage.removeItem("userEmail");
-      console.log("LocalStorage cleared"); // Debug
+      console.log("LocalStorage cleared");
     } catch (error) {
-      console.log("Error clearing localStorage:", error); // Debug
+      console.log("Error clearing localStorage:", error);
     }
     setToken(null);
     setUserEmail("");
     setActiveTab('upload');
     setShowUserMenu(false);
-    console.log("State updated, reloading page"); // Debug
-    // Forcer le rechargement de la page pour nettoyer complètement l'état
+    console.log("State updated, reloading page");
     window.location.reload();
   };
 
@@ -90,7 +89,7 @@ export default function App() {
           }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center h-16">
-                {/* Logo et Titre */}
+                {/* Logo and Title */}
                 <div className="flex items-center space-x-4">
                   <div className={`p-2 rounded-xl ${
                     darkMode ? 'bg-blue-500/20' : 'bg-blue-100'
@@ -108,7 +107,7 @@ export default function App() {
                     <p className={`text-sm ${
                       darkMode ? 'text-gray-400' : 'text-gray-600'
                     }`}>
-                      Intelligence Artificielle Documentaire
+                      Document AI Intelligence
                     </p>
                   </div>
                 </div>
@@ -158,7 +157,7 @@ export default function App() {
                         ? 'text-yellow-400 hover:bg-gray-800' 
                         : 'text-gray-600 hover:bg-gray-100'
                     }`}
-                    title={darkMode ? 'Mode clair' : 'Mode sombre'}
+                    title={darkMode ? 'Light mode' : 'Dark mode'}
                   >
                     {darkMode ? <FaSun /> : <FaMoon />}
                   </button>
@@ -178,7 +177,7 @@ export default function App() {
                         <FaUser className="text-sm" />
                       </div>
                       <span className="hidden sm:inline text-sm">
-                        {userEmail || 'Utilisateur'}
+                        {userEmail || 'User'}
                       </span>
                     </button>
                   </div>
@@ -195,7 +194,7 @@ export default function App() {
                         ? 'text-red-400 hover:bg-red-900/20 hover:text-red-300 border border-red-800/50 hover:border-red-700' 
                         : 'text-red-600 hover:bg-red-50 hover:text-red-700 border border-red-200 hover:border-red-300'
                     }`}
-                    title="Se déconnecter"
+                    title="Logout"
                     type="button"
                   >
                     <FaSignOutAlt className="text-xs" />
@@ -210,7 +209,7 @@ export default function App() {
         {/* Main Content */}
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {!token ? (
-            /* Landing Page pour Auth */
+            /* Landing Page for Auth */
             <div className="min-h-screen flex items-center justify-center">
               <div className="max-w-md w-full">
                 <div className="text-center mb-8">
@@ -229,7 +228,7 @@ export default function App() {
                   <p className={`text-lg ${
                     darkMode ? 'text-gray-400' : 'text-gray-600'
                   }`}>
-                    Analysez vos documents avec l'IA
+                    Analyze your documents with AI
                   </p>
                 </div>
                 <AuthForm onAuth={handleSetToken} darkMode={darkMode} />
@@ -244,14 +243,14 @@ export default function App() {
                     <h2 className={`text-2xl font-bold ${
                       darkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      {activeTab === 'upload' ? 'Gestion des Documents' : 'Assistant IA'}
+                      {activeTab === 'upload' ? 'Document Management' : 'AI Assistant'}
                     </h2>
                     <p className={`text-sm mt-1 ${
                       darkMode ? 'text-gray-400' : 'text-gray-600'
                     }`}>
                       {activeTab === 'upload' 
-                        ? 'Uploadez vos documents PDF pour les analyser'
-                        : 'Posez des questions sur vos documents uploadés'
+                        ? 'Upload your PDF documents for analysis'
+                        : 'Ask questions about your uploaded documents'
                       }
                     </p>
                   </div>

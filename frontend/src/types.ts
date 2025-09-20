@@ -10,5 +10,10 @@ export type RegisterPayload = {
 
 export type QueryResponse = {
   answer: string;
-  sources: Array<{ id?: string | number; payload?: any; score?: number; }>;
+  sources: Array<{
+    document_id: any;
+    name: any;
+    title: any;
+    document_title: any; id?: string | number; payload?: any; score?: number; 
+}>;
 };
