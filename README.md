@@ -15,8 +15,8 @@ A full-stack Retrieval-Augmented Generation (RAG) system that allows users to up
                          │(Caching)│         │ (Vector Store)  │
                          └─────────┘         └─────────────────┘
                               │                       │
-                    ┌─────────▼─────────┐     ┌───────▼────────┐
-                    │    AI Pipeline    │     │   Embeddings   │
+                    ┌─────────▼───────── ┐    ┌───────▼────────┐
+                    │    AI Pipeline     │    │   Embeddings   │
                     │                    │    │   (OpenAI)     │
                     │ ┌─────────────────┐│    └────────────────┘
                     │ │  Claude 3.5     ││
