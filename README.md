@@ -14,9 +14,9 @@ A full-stack Retrieval-Augmented Generation (RAG) system that allows users to up
                          │  Redis  │         │     Qdrant      │
                          │(Caching)│         │ (Vector Store)  │
                          └─────────┘         └─────────────────┘
-                              │                      │
-                    ┌─────────▼─────────┐    ┌───────▼────────┐
-                    │    AI Pipeline     │    │   Embeddings   │
+                              │                       │
+                    ┌─────────▼─────────┐     ┌───────▼────────┐
+                    │    AI Pipeline    │     │   Embeddings   │
                     │                    │    │   (OpenAI)     │
                     │ ┌─────────────────┐│    └────────────────┘
                     │ │  Claude 3.5     ││
@@ -77,6 +77,7 @@ cp .env.example .env
 
 # Configure your API keys and settings:
 # OPENAI_API_KEY=your_openai_key
+# CLAUDE_API_KEY=your_claude_key
 # POSTGRES_URL=postgresql://user:pass@localhost:5432/ragdb
 # REDIS_URL=redis://localhost:6379
 # QDRANT_URL=http://localhost:6333
@@ -114,17 +115,12 @@ npm run dev
 ### Authentication
 - `POST /auth/register` - Create new account
 - `POST /auth/login` - User login
-- `POST /auth/refresh` - Refresh JWT token
 
 ### Document Management
 - `POST /documents/upload` - Upload PDF document
-- `GET /documents/` - List user documents
-- `DELETE /documents/{doc_id}` - Delete document
 
 ### Query & Chat
-- `POST /query/ask` - Ask question about documents
-- `GET /query/history` - Get chat history
-- `DELETE /query/history` - Clear chat history
+- `POST /qa/query` - Ask question about documents
 
 ### Health & Status
 - `GET /health` - Service health check
@@ -134,17 +130,17 @@ npm run dev
 
 ### Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `OPENAI_API_KEY` | OpenAI API key for LLM | Required |
-| `POSTGRES_URL` | PostgreSQL connection string | `postgresql://postgres:postgres@localhost:5432/ragdb` |
-| `REDIS_URL` | Redis connection string | `redis://localhost:6379` |
-| `QDRANT_URL` | Qdrant vector database URL | `http://localhost:6333` |
-| `JWT_SECRET_KEY` | JWT signing secret | Random generated |
-| `JWT_EXPIRE_HOURS` | JWT token expiration | `24` |
-| `MAX_FILE_SIZE_MB` | Maximum upload file size | `10` |
-| `EMBEDDING_MODEL` | OpenAI embedding model | `text-embedding-ada-002` |
-| `LLM_MODEL` | OpenAI chat model | `gpt-3.5-turbo` |
+| Variable           | Description                  | Default |
+|--------------------|------------------------------|---------|
+| `OPENAI_API_KEY`   | OpenAI API key for LLM       | Required |
+| `CLAUDE_API_KEY`   | CLAUDE API key for LLM       | Required |
+| `POSTGRES_URL`     | PostgreSQL connection string | `postgresql://postgres:postgres@localhost:5432/ragdb` |
+| `REDIS_URL`        | Redis connection string      | `redis://localhost:6379` |
+| `QDRANT_URL`       | Qdrant vector database URL   | `http://localhost:6333` |
+| `JWT_SECRET_KEY`   | JWT signing secret           | Random generated |
+| `JWT_EXPIRE_HOURS` | JWT token expiration         | `24` |
+| `MAX_FILE_SIZE_MB` | Maximum upload file size     | `10` |
+| `LLM_MODEL`        | OpenAI chat model            | `gpt-3.5-turbo` |
 
 ### Docker Services
 
