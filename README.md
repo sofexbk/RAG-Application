@@ -15,7 +15,7 @@ A full-stack Retrieval-Augmented Generation (RAG) system that allows users to up
                          │(Caching)│         │ (Vector Store)  │
                          └─────────┘         └─────────────────┘
                               │                       │
-                    ┌─────────▼───────── ┐    ┌───────▼────────┐
+                    ┌─────────▼──────────┐    ┌───────▼────────┐
                     │    AI Pipeline     │    │   Embeddings   │
                     │                    │    │   (OpenAI)     │
                     │ ┌─────────────────┐│    └────────────────┘
@@ -294,5 +294,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ using FastAPI, React, and modern AI technologies**# RAG-Dashboard---Document-Intelligence-System
+**Built with ❤️ using FastAPI, React, and modern AI technologies**# RAG-Application
 # RAG-Application

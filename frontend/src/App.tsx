@@ -102,7 +102,7 @@ export default function App() {
                     <h1 className={`text-xl font-bold ${
                       darkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      RAG Dashboard
+                      RAG Application
                     </h1>
                     <p className={`text-sm ${
                       darkMode ? 'text-gray-400' : 'text-gray-600'
@@ -223,7 +223,7 @@ export default function App() {
                   <h1 className={`text-4xl font-bold mb-2 ${
                     darkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    RAG Dashboard
+                    RAG Application
                   </h1>
                   <p className={`text-lg ${
                     darkMode ? 'text-gray-400' : 'text-gray-600'
@@ -235,7 +235,7 @@ export default function App() {
               </div>
             </div>
           ) : (
-            /* Dashboard Content */
+            /* oard Content */
             <div className="max-w-6xl mx-auto">
               <div className="mb-8">
                 <div className="flex items-center justify-between">
@@ -243,7 +243,7 @@ export default function App() {
                     <h2 className={`text-2xl font-bold ${
                       darkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      {activeTab === 'upload' ? 'Document Management' : 'AI Assistant'}
+                      {activeTab === 'upload' ? 'Document Analysis' : 'AI Assistant'}
                     </h2>
                     <p className={`text-sm mt-1 ${
                       darkMode ? 'text-gray-400' : 'text-gray-600'
